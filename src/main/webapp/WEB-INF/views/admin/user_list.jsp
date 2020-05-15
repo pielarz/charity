@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Foundations</title>
+    <title>Users list</title>
     <link rel="stylesheet" href="/resources/css/foundations.css">
 </head>
 <body>
@@ -15,8 +15,9 @@
     <c:forEach items="${users}" var="user">
         <tr>
             <td><c:out value="${user.username}"/></td>
-            <td id="edit"><a href="/admin/users/form?id=${institution.id}">Edytuj</a></td>
-            <td id="delete"><a href="/admin/users/delete?id=${institution.id}">Usuń</a></td>
+            <td id="block"><a href="/admin/users/block?id=${user.id}">Zablokuj/Odblokuj</a></td>
+            <td id="edit"><a href="/admin/users/form?id=${user.id}">Edytuj</a></td>
+            <td id="delete"><a href="/admin/users/delete?id=${user.id}">Usuń</a></td>
         </tr>
     </c:forEach>
 </table>
