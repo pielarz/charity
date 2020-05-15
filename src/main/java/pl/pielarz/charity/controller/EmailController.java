@@ -32,7 +32,7 @@ public class EmailController {
         User user = token.getUser();
         user.setEnabled(true);
         userRepository.save(user);
-        return "user/login";
+        return "redirect:/login";
     }
 
 
