@@ -14,12 +14,16 @@
 <table>
     <c:forEach items="${users}" var="user">
         <tr>
-            <td><c:out value="${user.username}"/></td>
-            <td id="block"><a href="/admin/users/block?id=${user.id}">Zablokuj/Odblokuj</a></td>
+            <td class="users">Użytkownik: <c:out value="${user.username}"/></td>
+            <td class="users" id="elem">Aktywny: <c:out value="${user.enabled}"/></td>
+            <td class="users" id="block"><a href="/admin/users/block?id=${user.id}">Zablokuj/Odblokuj</a></td>
+        </tr>
+        <tr>
             <td id="edit"><a href="/admin/users/form?id=${user.id}">Edytuj</a></td>
-            <td id="delete"><a href="/admin/users/delete?id=${user.id}">Usuń</a></td>
+            <td id="delete" colspan="2"><a href="/admin/users/delete?id=${user.id}">Usuń</a></td>
         </tr>
     </c:forEach>
 </table>
+<script src="<c:url value="/resources/js/admin.js"/>"></script>
 </body>
 </html>
