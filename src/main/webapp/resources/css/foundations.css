@@ -51,3 +51,11 @@ header {
     background-color: rgb(188, 211, 86);
     padding: 10px;
 }
+
+#block:hover{
+    background-color: darkorange;
+}
+
+.users{
+    border: 2px solid #3c3c3c;
+}
