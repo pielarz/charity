@@ -41,6 +41,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginProcessingUrl("/login").failureForwardUrl("/login")
                 .successHandler(customSuccessHandler)
                 .and()
-                .logout().permitAll();
+                .exceptionHandling()
+                .accessDeniedPage("/403");
     }
 }
