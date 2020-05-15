@@ -6,8 +6,10 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.pielarz.charity.model.Institution;
+import pl.pielarz.charity.model.User;
 import pl.pielarz.charity.service.InstitutionService;
 import pl.pielarz.charity.service.InstitutionServiceImpl;
+import pl.pielarz.charity.service.UserService;
 
 import javax.naming.Binding;
 import javax.validation.Valid;
@@ -24,6 +26,7 @@ public class AdminController {
         return "admin/admin";
     }
 
+    //-------------FOUNDATIONS-------------
     @GetMapping("/foundations")
     public String foundations() {
         return "admin/foundations";
@@ -50,12 +53,35 @@ public class AdminController {
         return "redirect:/admin/foundations";
     }
 
+    //----------------USERS-----------------
+    @GetMapping("/users")
+    public String users(){
+        return "admin/users";
+        }
+
+
+
+
+
     @Autowired
     InstitutionService institutionService;
+
+    @Autowired
+    UserService userService;
 
     @ModelAttribute("institutions")
     public List<Institution> institutions() {
         return institutionService.findAll();
+    }
+
+    @ModelAttribute("users")
+    public List<User> userList() {
+        return userService.findAllUsers();
+    }
+
+    @ModelAttribute("admins")
+    public List<User> adminList(){
+        return userService.findAllAdmins();
     }
 
 }

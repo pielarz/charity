@@ -9,6 +9,7 @@ import pl.pielarz.charity.repository.TokenRepository;
 import pl.pielarz.charity.repository.UserRepository;
 
 import javax.mail.MessagingException;
+import java.util.List;
 import java.util.UUID;
 
 
@@ -53,5 +54,15 @@ public class UserServiceImpl implements UserService{
         } catch (MessagingException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public List<User> findAllUsers() {
+        return userRepository.findByRoleLike("ROLE_USER");
+    }
+
+    @Override
+    public List<User> findAllAdmins() {
+        return userRepository.findByRoleLike("ROLE_ADMIN");
     }
 }
