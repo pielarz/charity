@@ -63,7 +63,7 @@ public class UserController {
     }
 
     @GetMapping("/logout")
-    public String fetchSignoutSite(HttpServletRequest request, HttpServletResponse response) {
+    public String logout(HttpServletRequest request, HttpServletResponse response) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth != null) {
             new SecurityContextLogoutHandler().logout(request, response, auth);
