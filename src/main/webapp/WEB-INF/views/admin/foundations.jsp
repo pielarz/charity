@@ -3,23 +3,24 @@
 <html>
 <head>
     <title>Foundations</title>
+    <link rel="stylesheet" href="/resources/css/foundations.css">
 </head>
 <body>
-<table border="1">
-    <h3>
-        <a href="/admin/foundations/form">DODAJ</a>
-    </h3>
-    <ul>
+<header>
+    <nav>
+        <a href="/admin/foundations/form" id="navi">DODAJ INSTYTUCJĘ</a>
+        <a href="/admin" id="navi">POWRÓT</a>
+    </nav>
+</header>
+<table>
     <c:forEach items="${institutions}" var="institution">
-        <div>
-        ID: <c:out value="${institution.id}"/><br/>
-        Nazwa: <c:out value="${institution.name}"/><br/>
-        <a href="/admin/foundations/form?id=${institution.id}">Edytuj</a>
-        <a href="/admin/foundations/delete?id=${institution.id}">Usuń</a>
-        </div>
-    </hr>
+        <tr>
+            <td><c:out value="${institution.name}"/></td>
+            <td id="edit"><a href="/admin/foundations/form?id=${institution.id}">Edytuj</a></td>
+            <td id="delete"><a href="/admin/foundations/delete?id=${institution.id}">Usuń</a></td>
+        </tr>
     </c:forEach>
-    </ul>
+</table>
 </table>
 </body>
 </html>

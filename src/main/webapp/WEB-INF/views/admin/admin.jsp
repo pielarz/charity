@@ -2,18 +2,22 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <link rel="stylesheet" href="/resources/css/foundations.css">
+    <title>Panel Admininstratora</title>
 </head>
 <body>
 <div>
     <h3>
         WITAJ <c:out value="${admin}"/>
     </h3>
-    <div>
-        <h5>
-            <a href="/admin/foundations">FUNDACJE</a>
-        </h5>
-    </div>
+    <header>
+        <nav>
+            <a href="/admin/admin_list" id="navi">ADMINISTRATORZY</a>
+            <a href="/admin/foundations" id="navi">INSTYTUCJE</a>
+            <a href="/admin/user_list" id="navi">UŻYTKOWNICY</a>
+            <a href="/logout" id="navi">WYLOGUJ</a>
+        </nav>
+    </header>
 </div>
 </body>
 </html>

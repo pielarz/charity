@@ -41,13 +41,13 @@ public class AdminController {
             return "admin/add_institution";
         }
         institutionService.save(institution);
-        return "admin/admin";
+        return "redirect:/admin/foundations";
     }
 
     @GetMapping("/foundations/delete")
     public String deleteFoundation(@RequestParam Long id){
         institutionService.deleteById(id);
-        return "admin/admin";
+        return "redirect:/admin/foundations";
     }
 
     @Autowired
