@@ -66,7 +66,7 @@
         </div>
     </div>
 
-    <a href="#" class="btn btn--large">Załóż konto</a>
+    <a href="/register" class="btn btn--large">Załóż konto</a>
     <a href="/donation/add" class="btn btn--large">Przekaż dary bez zakładania konta</a>
 </section>
 
