@@ -19,7 +19,7 @@
             <td class="users" id="block"><a href="/admin/users/block?id=${user.id}">Zablokuj/Odblokuj</a></td>
         </tr>
         <tr>
-            <td id="edit"><a href="/admin/users/form?id=${user.id}">Edytuj</a></td>
+            <td id="edit"><a href="/user/users/form?id=${user.id}">Edytuj</a></td>
             <td id="delete"><a href="/admin/users/delete?id=${user.id}">Usuń</a></td>
             <td id="promote"><a href="/admin/users/changeRole?id=${user.id}">Mianuj adminem</a></td>
         </tr>

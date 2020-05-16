@@ -63,26 +63,6 @@ public class AdminController {
         return "admin/admin_list";
     }
 
-    @GetMapping("/users/form")
-    public String getEditUser(@RequestParam Long id, Model model) {
-        User user = userService.findById(id);
-        model.addAttribute("user", user);
-        return "admin/edit_user";
-    }
-
-    @PostMapping("/users/form")
-    public String postEditUser(@Valid User user, BindingResult result) {
-        if(result.hasErrors()) {
-            return "admin/edit_user";
-        }
-        user.setEnabled(true);
-        userService.saveEditedUser(user);
-        if(user.getRole().equals("ROLE_ADMIN")){
-            return "redirect:/admin/admin_list";
-        }
-        return "admin/user_list";
-    }
-
     @GetMapping("/users/delete")
     public String deleteUser(@RequestParam Long id){
         userService.deleteById(id);
