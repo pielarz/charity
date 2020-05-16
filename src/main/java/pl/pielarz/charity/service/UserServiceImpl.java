@@ -14,7 +14,7 @@ import java.util.UUID;
 
 
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
     private MailService mailService;
     private TokenRepository tokenRepository;
@@ -47,7 +47,7 @@ public class UserServiceImpl implements UserService{
 
         String url = "http://localhost:8080/token?value=" + tokenValue;
         String subject = "Link aktywacyjny";
-        String message = "Potwiedź rejestrację klikając w link w wiadomości :) \n\n"+url;
+        String message = "Potwiedź rejestrację klikając w link w wiadomości :) \n\n" + url;
 
         try {
             mailService.sendMail(user.getEmail(), subject, message, false);
@@ -64,5 +64,21 @@ public class UserServiceImpl implements UserService{
     @Override
     public List<User> findAllAdmins() {
         return userRepository.findByRoleLike("ROLE_ADMIN");
+    }
+
+    @Override
+    public User findById(Long id) {
+        return userRepository.findById(id).get();
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        userRepository.deleteById(id);
+    }
+
+    @Override
+    public void saveEditedUser(User user) {
+        user.setRole("ROLE_USER");
+        userRepository.save(user);
     }
 }

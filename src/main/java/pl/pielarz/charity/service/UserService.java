@@ -12,4 +12,7 @@ public interface UserService {
     void sendToken(User user);
     List<User> findAllUsers();
     List<User> findAllAdmins();
+    User findById(Long id);
+    void deleteById(Long id);
+    void saveEditedUser(User user);
 }
