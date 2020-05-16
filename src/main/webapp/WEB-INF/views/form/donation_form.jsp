@@ -3,6 +3,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <!DOCTYPE html>
 <html lang="pl">
@@ -14,7 +15,12 @@
     <link rel="stylesheet" href="<c:url value="/resources/css/style.css"/>">
 </head>
 <body>
-<%@include file="../common/header-user.jsp" %>
+<sec:authorize access="isAuthenticated()">
+    <%@include file="/WEB-INF/views/common/header-user.jsp"%>
+</sec:authorize>
+<sec:authorize access="isAnonymous()">
+    <%@ include file="/WEB-INF/views/common/header.jsp" %>
+</sec:authorize>
 
 <section class="form--steps">
     <div class="form--steps-instructions">
@@ -43,7 +49,6 @@
             <!-- STEP 1: class .active is switching steps -->
             <div data-step="1" class="active">
                 <h3>Zaznacz co chcesz oddać:</h3>
-
                 <c:forEach items="${categories}" var="category">
                     <div class="form-group form-group--checkbox">
                         <label>
