@@ -20,7 +20,8 @@
         </tr>
         <tr>
             <td id="edit"><a href="/admin/users/form?id=${user.id}">Edytuj</a></td>
-            <td id="delete" colspan="2"><a href="/admin/users/delete?id=${user.id}">Usuń</a></td>
+            <td id="delete"><a href="/admin/users/delete?id=${user.id}">Usuń</a></td>
+            <td id="promote"><a href="/admin/users/changeRole?id=${user.id}">Mianuj adminem</a></td>
         </tr>
     </c:forEach>
 </table>

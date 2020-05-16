@@ -18,6 +18,10 @@ td,
     text-align: center;
 }
 
+#demote:hover {
+    background-color: darkorange;
+}
+
 #edit:hover {
     background-color: lightseagreen;
 }
@@ -32,7 +36,7 @@ a {
     text-align: center;
 }
 
-#navi:hover {
+#navi:hover, #promote:hover {
     background-color: rgb(0, 64, 255);
 }
 #navi {

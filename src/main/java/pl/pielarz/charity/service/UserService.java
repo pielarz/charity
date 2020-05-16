@@ -15,4 +15,5 @@ public interface UserService {
     User findById(Long id);
     void deleteById(Long id);
     void saveEditedUser(User user);
+    void saveEditedRoleUser(User user);
 }

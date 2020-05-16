@@ -14,9 +14,10 @@
 <table>
     <c:forEach items="${admins}" var="admin">
         <tr>
-            <td><c:out value="${admin.username}"/></td>
-            <td id="edit"><a href="/admin/users/form?id=${institution.id}">Edytuj</a></td>
-            <td id="delete"><a href="/admin/users/delete?id=${institution.id}">Usuń</a></td>
+            <td class="users">Użytkownik: <c:out value="${admin.username}"/></td>
+            <td id="demote"><a href="/admin/users/changeRole?id=${admin.id}">Zdegraduj admina</a></td>
+            <td id="edit"><a href="/admin/users/form?id=${admin.id}">Edytuj</a></td>
+            <td id="delete" colspan="2"><a href="/admin/users/delete?id=${admin.id}">Usuń</a></td>
         </tr>
     </c:forEach>
 </table>

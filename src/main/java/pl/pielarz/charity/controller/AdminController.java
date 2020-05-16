@@ -58,6 +58,10 @@ public class AdminController {
         return "admin/user_list";
     }
 
+    @GetMapping("/admins")
+    public String admins(){
+        return "admin/admin_list";
+    }
 
     @GetMapping("/users/form")
     public String getEditUser(@RequestParam Long id, Model model) {
@@ -97,6 +101,17 @@ public class AdminController {
         return "admin/user_list";
     }
 
+    @GetMapping("/users/changeRole")
+    public String changeRoleOfUser(@RequestParam Long id){
+        User user = userService.findById(id);
+        if(user.getRole().equals("ROLE_USER")){
+            user.setRole("ROLE_ADMIN");
+        } else {
+            user.setRole("ROLE_USER");
+        }
+        userService.saveEditedRoleUser(user);
+        return "redirect:/admin/users";
+    }
 
     @Autowired
     InstitutionService institutionService;
