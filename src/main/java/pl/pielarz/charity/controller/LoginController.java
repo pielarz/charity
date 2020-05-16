@@ -11,29 +11,26 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import pl.pielarz.charity.model.User;
-import pl.pielarz.charity.repository.UserRepository;
 import pl.pielarz.charity.service.UserService;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-import java.security.Principal;
+
 
 @Controller
-public class UserController {
+public class LoginController {
 
     private UserService userService;
-    private UserRepository userRepository;
 
     @Autowired
-    public UserController(UserService userService) {
+    public LoginController(UserService userService) {
         this.userService = userService;
     }
 
     @GetMapping("/register")
     public String register(Model model){
         model.addAttribute("user", new User());
-        return "user/register";
+        return "security/register";
     }
     @PostMapping("/register")
     public String registerUser(User user){
@@ -44,22 +41,15 @@ public class UserController {
     @GetMapping("/login")
     public String login(Model model){
         model.addAttribute("user",new User());
-        return "user/login";
+        return "security/login";
     }
 
     @PostMapping("/login")
     public String doLogin(@Valid @ModelAttribute("user") User user, BindingResult result){
         if(result.hasErrors()){
-            return "user/login";
+            return "security/login";
         }
         return "home/index";
-    }
-
-
-    @GetMapping("/user")
-    public String userPage(Principal principal, Model model){
-        model.addAttribute("userName", principal.getName());
-        return "user/user_page";
     }
 
     @GetMapping("/logout")
