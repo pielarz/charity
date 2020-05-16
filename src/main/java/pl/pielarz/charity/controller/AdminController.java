@@ -8,10 +8,8 @@ import org.springframework.web.bind.annotation.*;
 import pl.pielarz.charity.model.Institution;
 import pl.pielarz.charity.model.User;
 import pl.pielarz.charity.service.InstitutionService;
-import pl.pielarz.charity.service.InstitutionServiceImpl;
 import pl.pielarz.charity.service.UserService;
 
-import javax.naming.Binding;
 import javax.validation.Valid;
 import java.security.Principal;
 import java.util.List;
@@ -38,9 +36,10 @@ public class AdminController {
         model.addAttribute("institution", institution);
         return "admin/add_institution";
     }
+
     @PostMapping("/foundations/form")
-    public String postInstitution(@Valid Institution institution, BindingResult result){
-        if(result.hasErrors()){
+    public String postInstitution(@Valid Institution institution, BindingResult result) {
+        if (result.hasErrors()) {
             return "admin/add_institution";
         }
         institutionService.save(institution);
@@ -48,19 +47,55 @@ public class AdminController {
     }
 
     @GetMapping("/foundations/delete")
-    public String deleteFoundation(@RequestParam Long id){
+    public String deleteFoundation(@RequestParam Long id) {
         institutionService.deleteById(id);
         return "redirect:/admin/foundations";
     }
 
     //----------------USERS-----------------
     @GetMapping("/users")
-    public String users(){
-        return "admin/users";
+    public String users() {
+        return "admin/user_list";
+    }
+
+
+    @GetMapping("/users/form")
+    public String getEditUser(@RequestParam Long id, Model model) {
+        User user = userService.findById(id);
+        model.addAttribute("user", user);
+        return "admin/edit_user";
+    }
+
+    @PostMapping("/users/form")
+    public String postEditUser(@Valid User user, BindingResult result) {
+        if(result.hasErrors()) {
+            return "admin/edit_user";
         }
+        user.setEnabled(true);
+        userService.saveEditedUser(user);
+        if(user.getRole().equals("ROLE_ADMIN")){
+            return "redirect:/admin/admin_list";
+        }
+        return "admin/user_list";
+    }
 
+    @GetMapping("/users/delete")
+    public String deleteUser(@RequestParam Long id){
+        userService.deleteById(id);
+        return "admin/user_list";
+    }
 
-
+    @GetMapping("/users/block")
+    public String blockUser(@RequestParam Long id){
+        User user = userService.findById(id);
+        if(user.isEnabled()){
+            user.setEnabled(false);
+        } else {
+            user.setEnabled(true);
+        }
+        userService.saveEditedUser(user);
+        return "admin/user_list";
+    }
 
 
     @Autowired
@@ -80,7 +115,7 @@ public class AdminController {
     }
 
     @ModelAttribute("admins")
-    public List<User> adminList(){
+    public List<User> adminList() {
         return userService.findAllAdmins();
     }
 
