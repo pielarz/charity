@@ -8,6 +8,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 
 @Entity
@@ -34,6 +35,9 @@ public class User implements UserDetails {
     private String lastName;
 
     private boolean isEnabled;
+
+    @OneToMany(mappedBy = "user")
+    private List<Donation> donations;
 
     //Stores roles in a list with one element
     @Override
@@ -121,5 +125,13 @@ public class User implements UserDetails {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public List<Donation> getDonations() {
+        return donations;
+    }
+
+    public void setDonations(List<Donation> donations) {
+        this.donations = donations;
     }
 }
