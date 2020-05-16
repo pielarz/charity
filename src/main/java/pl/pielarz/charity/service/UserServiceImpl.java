@@ -20,13 +20,15 @@ public class UserServiceImpl implements UserService {
     private TokenRepository tokenRepository;
     private UserRepository userRepository;
     private PasswordEncoder passwordEncoder;
+    private AuthenticationFacade authenticationFacade;
 
     @Autowired
-    public UserServiceImpl(MailService mailService, TokenRepository tokenRepository, UserRepository userRepository, PasswordEncoder passwordEncoder) {
+    public UserServiceImpl(MailService mailService, TokenRepository tokenRepository, UserRepository userRepository, PasswordEncoder passwordEncoder, AuthenticationFacade authenticationFacade) {
         this.mailService = mailService;
         this.tokenRepository = tokenRepository;
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
+        this.authenticationFacade = authenticationFacade;
     }
 
     @Override
@@ -34,7 +36,10 @@ public class UserServiceImpl implements UserService {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRole("ROLE_USER");
         userRepository.save(user);
-        sendToken(user);
+        if(!user.isEnabled()){
+            sendToken(user);
+        }
+
     }
 
     @Override
@@ -86,4 +91,12 @@ public class UserServiceImpl implements UserService {
     public void saveEditedRoleUser(User user) {
         userRepository.save(user);
     }
+
+    @Override
+    public User findByUsername(String username) {
+
+        return userRepository.findByUsername(username)
+                .orElse(userRepository.findByUsername("anonymous").get());
+    }
+
 }

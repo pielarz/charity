@@ -16,4 +16,6 @@ public interface UserService {
     void deleteById(Long id);
     void saveEditedUser(User user);
     void saveEditedRoleUser(User user);
+    User findByUsername(String username);
+
 }
