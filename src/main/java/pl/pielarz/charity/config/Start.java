@@ -45,9 +45,20 @@ public class Start {
         user.setRole("ROLE_USER");
         user.setEnabled(true);
 
+        //ANONYMOUS USER
+        User anonymous = new User();
+        anonymous.setUsername("anonymous");
+        anonymous.setPassword(passwordEncoder.encode("anonymous"));
+        anonymous.setName("Gal");
+        anonymous.setLastName("Anonim");
+        anonymous.setEmail("anonim@anonim.pl");
+        anonymous.setRole("ROLE_USER");
+        anonymous.setEnabled(true);
+
         //SAVE USERS
         userRepository.save(admin);
         userRepository.save(user);
+        userRepository.save(anonymous);
 
 
 
