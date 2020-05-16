@@ -14,7 +14,7 @@
         <nav>
             <a href="/admin/admin_list" id="navi">ADMINISTRATORZY</a>
             <a href="/admin/foundations" id="navi">INSTYTUCJE</a>
-            <a href="/admin/user_list" id="navi">UŻYTKOWNICY</a>
+            <a href="/admin/users" id="navi">UŻYTKOWNICY</a>
             <a href="/logout" id="navi">WYLOGUJ</a>
         </nav>
     </header>
