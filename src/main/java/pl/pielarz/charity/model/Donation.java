@@ -39,17 +39,17 @@ public class Donation {
     @ManyToOne
     private User user;
 
-    @NotEmpty
+    @NotEmpty(message = "Proszę podaj ulicę.")
     private String street;
 
-    @NotEmpty
+    @NotEmpty(message = "Proszę podaj miasto.")
     private String city;
 
-    @NotEmpty
+    @NotEmpty(message = "Proszę podaj kod pocztowy.")
     @Column(name = "zip_code")
     private String zipCode;
 
-    @NotEmpty
+    @NotEmpty(message = "Proszę podaj numer telefonu.")
     @Pattern(regexp = "^[0-9]{9}$", message = "Telefon ma tylko cyfry.")
     @Column(name = "phone_number")
     private String phoneNumber;
@@ -62,7 +62,7 @@ public class Donation {
     @Column(name = "pick_up_time")
     private LocalTime pickUpTime;
 
-    @NotEmpty
+
     @Column(name = "pick_up_comment")
     private String pickUpComment;
 }

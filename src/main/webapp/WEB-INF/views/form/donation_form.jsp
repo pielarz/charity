@@ -162,14 +162,14 @@
             <!-- STEP 5 -->
             <div data-step="5">
                 <h3>Podsumowanie Twojej darowizny</h3>
-                <form:errors path="categories"/>
-                <form:errors path="institution"/>
-                <form:errors path="street"/>
-                <form:errors path="city"/>
-                <form:errors path="zipCode"/>
-                <form:errors path="phoneNumber"/>
-                <form:errors path="pickUpDate"/>
-                <form:errors path="pickUpTime"/>
+                <form:errors path="categories"></form:errors>
+                <form:errors path="institution"></form:errors>
+                <form:errors path="street"></form:errors>
+                <form:errors path="city"></form:errors>
+                <form:errors path="zipCode"></form:errors>
+                <form:errors path="phoneNumber"></form:errors>
+                <form:errors path="pickUpDate"></form:errors>
+                <form:errors path="pickUpTime"></form:errors>
                 <div class="summary">
                     <div class="form-section">
                         <h4>Oddajesz:</h4>

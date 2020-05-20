@@ -1,5 +1,6 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<header class="header--form-page">
+<header>
     <nav class="container container--70">
         <ul class="nav--actions">
             <li class="logged-user">

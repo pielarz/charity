@@ -13,7 +13,7 @@
     <header>
         <nav>
             <a href="/user/users/form?id=${currentUserId}" id="navi">EDYTUJ PROFIL</a>
-            <a href="/user/donation/add" id="navi">ODDAJ RZECZY</a>
+            <a href="/donation/add" id="navi">ODDAJ RZECZY</a>
             <a href="/home" id="navi">STRONA GŁÓWNA</a>
             <a href="/logout" id="navi">WYLOGUJ</a>
         </nav>

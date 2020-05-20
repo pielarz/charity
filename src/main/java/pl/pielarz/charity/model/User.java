@@ -23,7 +23,8 @@ public class User implements UserDetails {
     @NotBlank(message = "Proszę wprowadź hasło.")
     private String password;
 
-    @Email(message = "Proszę wprowadź adres email.")
+    @NotBlank(message = "Proszę wprowadź adres email.")
+    @Email(message = "Proszę wprowadź prawidłowy adres email.")
     private String email;
 
     private String role;

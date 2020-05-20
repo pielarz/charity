@@ -3,6 +3,7 @@ package pl.pielarz.charity.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.pielarz.charity.model.Category;
 import pl.pielarz.charity.model.Donation;
@@ -54,13 +55,17 @@ public class DonationController {
     }
 
     @PostMapping("/add")
-    public String getDonationForm(@Valid Donation donation, @ModelAttribute("user")User user) {
+    public String getDonationForm(@Valid Donation donation, @ModelAttribute("user")User user, BindingResult result) {
+        if(result.hasErrors()){
+            return "form/donation_form";
+        }
         if(authentication.getAuthentication().isAuthenticated()){
             List<Donation> userDonations = user.getDonations();
             userDonations.add(donation);
             donation.setUser(user);
             userService.saveEditedUser(user);
         }
+
         donationService.save(donation);
 
         return "form/donation_form-confirmation";

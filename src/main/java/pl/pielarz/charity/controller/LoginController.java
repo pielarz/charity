@@ -33,7 +33,10 @@ public class LoginController {
         return "security/register";
     }
     @PostMapping("/register")
-    public String registerUser(User user){
+    public String registerUser(@Valid User user, BindingResult result){
+        if(result.hasErrors()){
+            return "security/register";
+        }
         userService.saveUser(user);
         return "home/index";
     }
@@ -45,7 +48,7 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    public String doLogin(@Valid @ModelAttribute("user") User user, BindingResult result){
+    public String doLogin(@Valid User user, BindingResult result){
         if(result.hasErrors()){
             return "security/login";
         }
