@@ -1,2 +1,18 @@
-# charity
-Project where everyone can hand on items which idle to charity of choice.
+## Table of contents
+* [General info](#general-info)
+* [Technologies](#technologies)
+
+## General info
+This project is a web application. A place where you can return your belongings.
+	
+## Technologies
+Project is created with:
+* Spring Boot
+* Spring Security
+* Spring Data JPA
+* Hibernate
+* MySQL
+* JavaScript
+* JQuery
+* CSS
+* HTML
