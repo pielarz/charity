@@ -11,7 +11,7 @@ This project is a web application with db connection and simple mail service wit
 DB backups, {...}
 
 ## Screenshots
-
+<img src="./img.png"/>
 
 ## Technologies
 Project is created with:
